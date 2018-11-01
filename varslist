@@ -1,3 +1,4 @@
 - nginx:
     INSTALLPATH: /opt/pipeline1
+    SHAREPATH: /tmp/pipelinetesting/
     UNZIPPATH: /data/pipeline1/unzipnginx/

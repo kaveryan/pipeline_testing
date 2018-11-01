@@ -6,6 +6,10 @@
     name: copy package
   - name: copy template
     template:
+      dest: /tmp/mount_sharepath.sh
+      src: mount_sharepath.j2
+  - name: copy template
+    template:
       dest: /tmp/createuserandpath.sh
       src: createuserandpath.j2
   - name: copy template
@@ -16,6 +20,10 @@
     template:
       dest: /tmp/installnginx.sh
       src: installnginx.j2
+  - args:
+      chdir: /tmp/
+    name: run script
+    shell: mount_sharepath.sh
   - args:
       chdir: /tmp/
     name: run script
@@ -30,4 +38,5 @@
     shell: installnginx.sh
   vars:
     INSTALLPATH: /opt/pipeline1
+    SHAREPATH: /tmp/pipelinetesting/
     UNZIPPATH: /data/pipeline1/unzipnginx/
