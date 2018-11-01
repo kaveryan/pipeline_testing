@@ -1,0 +1,33 @@
+- name: nginx
+  task:
+  - copy:
+      dest: /tmp/
+      src: nginx-1.15.5.tar.gz
+    name: copy package
+  - name: copy template
+    template:
+      dest: /tmp/createuserandpath.sh
+      src: createuserandpath.j2
+  - name: copy template
+    template:
+      dest: /tmp/unzipnginx.sh
+      src: unzipnginx.j2
+  - name: copy template
+    template:
+      dest: /tmp/installnginx.sh
+      src: installnginx.j2
+  - args:
+      chdir: /tmp/
+    name: run script
+    shell: createuserandpath.sh
+  - args:
+      chdir: /tmp/
+    name: run script
+    shell: unzipnginx.sh
+  - args:
+      chdir: /tmp/
+    name: run script
+    shell: installnginx.sh
+  vars:
+    INSTALLPATH: /opt/pipeline1
+    UNZIPPATH: /data/pipeline1/unzipnginx/

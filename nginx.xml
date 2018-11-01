@@ -8,11 +8,11 @@
   </packages>
   <parameters>
     <parameter>
-      <parametername>INSTALLPATH<parametername>
+      <parametername>INSTALLPATH</parametername>
       <default>/opt/pipeline1</default>
     </parameter>
     <parameter>
-      <parametername>UNZIPPATH<parametername>
+      <parametername>UNZIPPATH</parametername>
       <default>/data/pipeline1/unzipnginx/</default>
     </parameter>
   </parameters>

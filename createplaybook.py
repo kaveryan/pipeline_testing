@@ -5,7 +5,7 @@ from lxml import etree
 import os
 import yaml
 
-def Logmsg(msg)
+def Logmsg(msg):
     print msg
 
 installlist = []
@@ -40,10 +40,10 @@ for component in installlist:
     vars = {}
     vars[component] = {}
     for x in componenttree.xpath('//parameters')[0].xpath('parameter'):
-        vars[component][x.path('parametername')[0].text] = None
-        if x.path('default'):
-            task['vars'][x.xpath('parametername')[0].text] = x.path('default')[0].text
-            vars[component][x.path('parametername')[0].text] = x.path('default')[0].text
+        vars[component][x.xpath('parametername')[0].text] = None
+        if x.xpath('default'):
+            task['vars'][x.xpath('parametername')[0].text] = x.xpath('default')[0].text
+            vars[component][x.xpath('parametername')[0].text] = x.xpath('default')[0].text
 
     varslist.append(vars)
 
@@ -60,7 +60,7 @@ for component in installlist:
     #copy template
     for a in componenttree.xpath('//deploy')[0].xpath('step'):
         for x in a.xpath('script'):
-            filename = x.path('scriptname')[0].text
+            filename = x.xpath('scriptname')[0].text
             templatename = x.xpath('templatename')[0].text
             step = {}
             step['name'] = 'copy template'
@@ -70,7 +70,7 @@ for component in installlist:
             task['task'].append(step)
 
         for x in a.xpath('configuration'):
-            filename = x.path('configurationname')[0].text
+            filename = x.xpath('configurationname')[0].text
             templatename = x.xpath('templatename')[0].text
             step = {}
             step['name'] = 'copy template'

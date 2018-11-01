@@ -1,0 +1,3 @@
+- nginx:
+    INSTALLPATH: /opt/pipeline1
+    UNZIPPATH: /data/pipeline1/unzipnginx/
