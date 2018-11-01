@@ -4,6 +4,7 @@
 from lxml import etree
 import os
 import yaml
+import getopt
 
 def Logmsg(msg):
     print msg
@@ -16,6 +17,17 @@ ansible_target_temp_path = "/tmp/"
 os_class = "linux"
 varslistfile = "varslist"
 varslist = []
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "i:", ["install"])
+except getopt.GetoptError:
+    pass
+    # print help information and exit:
+
+for o, a in opts:
+    if o in ("-i", "--install"):
+        print a
+
 
 with open("installlist","r") as installlistf:
     for line in installlistf.readlines():

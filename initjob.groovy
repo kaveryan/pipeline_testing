@@ -1,17 +1,21 @@
+#!groovy
 pipeline {
-    stage("Component List"){
-      parameters {
-          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    agent any
+    parameters {
+        text(name:'installlist', defaultValue: 'nginx', description: 'install list')
+        string(name:'installlist', defaultValue: 'nginx', description: 'User name')
+        password(name:'installlist', defaultValue: 'nginx', description: 'password')
+    }
+    stages{
+        stage("Component L"){
+            steps{
+                  script{
+                      installlist = ${params.installlist}
+                      sh 'python createplaybook.py $installlist'
+                      # user = input ( message : 'Select deployment versión and input deployment code:', parameters: [[$class: 'TextParameterDefinition', defaultValue: '', description: 'Clarive code', name: 'code']] )
+                  }
+              }
+        }
 
-          text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-
-          booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-
-          choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-
-          password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-
-          file(name: "FILE", description: "Choose a file to upload")
-      }
     }
 }
