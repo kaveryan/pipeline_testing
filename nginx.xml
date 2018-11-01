@@ -8,6 +8,10 @@
   </packages>
   <parameters>
     <parameter>
+      <parametername>SHAREPATH</parametername>
+      <default>/tmp/pipelinetesting/</default>
+    </parameter>
+    <parameter>
       <parametername>INSTALLPATH</parametername>
       <default>/opt/pipeline1</default>
     </parameter>
@@ -17,6 +21,12 @@
     </parameter>
   </parameters>
   <deploy>
+    <step>
+      <script>
+        <scriptname>mount_sharepath.sh</scriptname>
+        <templatename>mount_sharepath.j2</templatename>
+      </script>
+    </step>
     <step>
       <script>
         <scriptname>createuserandpath.sh</scriptname>

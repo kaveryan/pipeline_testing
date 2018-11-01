@@ -1,0 +1,3 @@
+#!/bin/#!/usr/bin/env bash
+mkdir {{ SHAREPATH }}
+mount -t cifs //192.168.56.110/pipeline {{ SHAREPATH }} -o username=pipelineuser,password=1,iocharset=utf8
