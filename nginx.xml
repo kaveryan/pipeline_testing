@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<app>
+  <appname>nginx</appname>
+  <packages>
+    <package>
+      <packagename>nginx-1.15.5.tar.gz</packagename>
+    </package>
+  </packages>
+  <parameters>
+    <parameter>
+      <parametername>INSTALLPATH<parametername>
+      <default>/opt/pipeline1</default>
+    </parameter>
+    <parameter>
+      <parametername>UNZIPPATH<parametername>
+      <default>/data/pipeline1/unzipnginx/</default>
+    </parameter>
+  </parameters>
+  <deploy>
+    <step>
+      <script>
+        <scriptname>createuserandpath.sh</scriptname>
+        <templatename>createuserandpath.j2</templatename>
+      </script>
+    </step>
+    <step>
+      <script>
+        <scriptname>unzipnginx.sh</scriptname>
+        <templatename>unzipnginx.j2</templatename>
+      </script>
+    </step>
+    <step>
+      <script>
+        <scriptname>installnginx.sh</scriptname>
+        <templatename>installnginx.j2</templatename>
+      </script>
+    </step>
+  </deploy>
+</app>

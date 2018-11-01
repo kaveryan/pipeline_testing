@@ -1,0 +1,4 @@
+#!/bin/#!/usr/bin/env bash
+cd {{ UNZIPPATH }}/nginx-1.15.5
+./configure  --prefix={{ INSTALLPATH }}/nginx
+make && make install
