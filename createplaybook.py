@@ -28,6 +28,8 @@ for o, a in opts:
     if o in ("-i", "--install"):
         print a
 
+print "begin"
+
 
 with open("installlist","r") as installlistf:
     for line in installlistf.readlines():
